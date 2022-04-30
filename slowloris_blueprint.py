@@ -1,8 +1,8 @@
 from flask import Blueprint
 
-test_blueprint = Blueprint('test_blueprint', __name__)
+slowloris_blueprint = Blueprint('slowloris_blueprint', __name__)
 
 
-@test_blueprint.route('/')
+@slowloris_blueprint.route('/')
 def index():
     return "Hello, world!"
