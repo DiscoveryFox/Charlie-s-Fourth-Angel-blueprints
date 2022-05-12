@@ -1,3 +1,4 @@
+import sys
 import requests
 
 scripts = ['slowloris_blueprint.py']
@@ -31,6 +32,9 @@ def install(raw_repo_url:str, locations:dict):
         with open(f"{locations['scripts']}{script}", 'w') as f:
             f.write(script_content)
 
+if __name__ == '__main__':
+    install(sys.argv[1], locations)
 
-install('https://raw.githubusercontent.com/DiscoveryFox/Charlie-s-Fourth-Angel-blueprints/main', locations=locations)
+
+# install('https://raw.githubusercontent.com/DiscoveryFox/Charlie-s-Fourth-Angel-blueprints/main', locations=locations)
 
