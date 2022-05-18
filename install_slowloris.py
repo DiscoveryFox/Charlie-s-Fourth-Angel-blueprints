@@ -9,12 +9,13 @@ javascripts = []
 
 htmls = ['slowloris.html']
 
-locations = {
-    'scripts': 'C:\\Users\\Flinn\\OneDrive\\Desktop\\.vscode\\Charlie-s-Fourth-Angel-blueprints\\',
-    }
-def install(raw_repo_url:str, locations:dict):
+binarys = []
+
+raw_repo_url = "https://raw.githubusercontent.com/DiscoveryFox/Charlie-s-Fourth-Angel-blueprints/main"
+
+def install(raw_repo_url:str):
     for script in scripts:
-        print('starting')
+        ## print('starting')
         # download all files from github from the given url as base and
         # save them to the given directory
 
@@ -29,11 +30,31 @@ def install(raw_repo_url:str, locations:dict):
         script_content = requests.get(script_url).text
         
         # write the content in a file
-        with open(f"{locations['scripts']}{script}", 'w') as f:
+        print(script)
+        with open(script, 'w') as f:
             f.write(script_content)
 
+    for stylesheet in stylesheets:
+        stylesheet_url = raw_repo_url + '/' + stylesheet
+
+        stylesheet_content = requests.get(stylesheet_url).text
+
+        with open(stylesheet, 'w') as f:
+            f.write(stylesheet_content)
+    
+    for javascript in javascripts:
+        javascript_url = raw_repo_url + '/' + javascript
+
+        javascript_content = requests.get(javascript_url).text
+
+        with open(javascript, 'w') as f:
+            f.write(javascript_content)
+    
+    
+
+
 if __name__ == '__main__':
-    install(sys.argv[1], locations)
+    install(raw_repo_url)
 
 
 # install('https://raw.githubusercontent.com/DiscoveryFox/Charlie-s-Fourth-Angel-blueprints/main', locations=locations)
